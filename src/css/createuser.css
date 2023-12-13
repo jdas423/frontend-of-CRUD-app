@@ -1,0 +1,36 @@
+
+@media screen and (max-width: 670px) {
+    #container{
+        width: 470px;
+        font-size:14px;
+    }
+
+    #userform > div{
+        width: 300px;
+    }
+
+    #btn{
+        width:300px;
+    }
+}
+
+
+@media screen  and (max-width: 540px) {
+    #container{
+        width: 370px;
+        font-size:14px;
+    }
+
+    
+}
+
+@media screen  and (max-width: 380px) {
+    #container{
+        width: 80%;
+        font-size:10px;
+    }
+
+    #userform > div{
+        width: 100%;
+    }
+}

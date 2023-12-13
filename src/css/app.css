@@ -1,0 +1,60 @@
+
+@media screen and (max-width: 670px) {
+    #container{
+        width: 470px;
+        font-size:14px;
+    }
+}
+
+
+@media screen  and (max-width: 540px) {
+    #container{
+        width: 370px;
+        font-size:14px;
+    }
+
+    #radiobtn > ul{
+        flex-wrap: wrap!important;
+    }
+   
+    #radiobtn > ul > li{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    #grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr))
+    }
+    
+}
+
+@media screen  and (max-width: 380px) {
+    #container{
+        width: 80%;
+        font-size:10px;
+    }
+
+    #search-container{
+        height: 30px;
+    }
+
+    #grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr))
+    }
+    
+    #grid> div, #nouser{
+        max-width:9rem;
+        width:fit-content;
+
+    }
+
+    #btn{
+        font-size:10px;
+        margin-left:10px;
+    }
+
+    #btn > button{
+        padding-left:10px;
+        padding-right:10px;
+    }
+}

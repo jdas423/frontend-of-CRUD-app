@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+ 
+ html{
+    height:fit-content;
+    min-height: 100vh;
+    width: 100vw;
+ }
+
+ body,#root{
+    height: 100%;
+    width: 100%;
+ }
+
+ #root{
+   min-height: 100vh;
+   height: fit-content;
+    @apply flex flex-row justify-center  items-start bg-gray-900;
+
+ }
+
+ ::-webkit-scrollbar {
+   width: 8px; /* For vertical scrollbars */
+   height: 8px; /* For horizontal scrollbars */
+ }
+ 
