@@ -8,10 +8,9 @@ const initialState = {
      toggler1:true,
      toggler2:true,
      toggler3:true,
-     initiate:true,
-     aggregate1:true,
-     aggregate2:true,
-     aggregate3:true,
+     disableToggles:false,
+     limit:1,
+     requestStr:"",
     }
 
 const userSlice = createSlice({
@@ -48,23 +47,22 @@ const userSlice = createSlice({
             state.toggler3=payload
          },
 
-         setInitiate: (state,{payload})=>{
-            state.initiate=payload
-         },
-         setAggregate1: (state,{payload})=>{
-            state.aggregate1=payload
-         },
-         setAggregate2: (state,{payload})=>{
-            state.aggregate2=payload
+        setDisableToggles:(state,{payload})=>{
+            state.disableToggles=payload
          },
 
-         setAggregate3: (state,{payload})=>{
-            state.aggregate3=payload
+         setLimit:(state,{payload})=>{
+            state.limit=payload
+         },
+        
+         setRequestStr:(state,{payload})=>{
+            state.requsetStr=payload
          }
+
         
     },
 })
 
 export const {loading, setActive,setStr, setUsers, setCurrentPageInd,setToggler1, setToggler2,
-    setToggler3, setInitiate,setAggregate1,setAggregate2,setAggregate3} = userSlice.actions;
+    setToggler3,setDisableToggles,setLimit,setRequestStr} = userSlice.actions;
 export default userSlice.reducer

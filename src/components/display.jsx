@@ -1,17 +1,12 @@
 
-import { useSelector,useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 
 export default function Display() { 
-    const {users,currentPageInd,initiate,toggler1,toggler2,toggler3,aggregate1,aggregate2,aggregate3}= useSelector(state => state.user);
+    const {users,currentPageInd,limit}= useSelector(state => state.user);
     const genLi=()=>{
         const li=[]
-        if((toggler1 && toggler2 && toggler3 && initiate) || (aggregate1 && aggregate2 && aggregate3 && initiate) 
-        || (toggler1 && aggregate2 && aggregate3 && initiate)  || (toggler1 && toggler2 && aggregate3 && initiate)
-        || (aggregate1 && toggler2 && aggregate3 && initiate)  || (aggregate1 && aggregate2 && toggler3 && initiate)
-        || (aggregate1 && toggler2 && toggler3 && initiate)  || (toggler1 && aggregate2 && toggler3 && initiate)
-  
-        ){
+        if(Math.ceil(users.length/10)<limit){
           for(let i=0;i<users.length;i++){
             li.push(
                 <div className="flex items-center justify-center flex-col bg-gray-700 p-4 rounded-lg w-48 space-y-4" key={i}>
@@ -24,7 +19,6 @@ export default function Display() {
             )}
         }
         else{
-
         for(let i=(currentPageInd-1)*10;i<currentPageInd*10 && i<users.length;i++){
             li.push(
                 <div className="flex items-center justify-center flex-col bg-gray-700 p-4 rounded-lg w-48 space-y-4" key={i}>

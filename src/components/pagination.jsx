@@ -1,44 +1,38 @@
 import {useSelector, useDispatch} from "react-redux"
 import {setCurrentPageInd} from "../js/reducer"
-import { useEffect } from "react"
-let pLimit
+import reqOnChn from "../js/reqOnChn";
 
 
-export default function Pagination({lim}) {
-    const {users,currentPageInd,active,toggler1,toggler2,toggler3,initiate,aggregate1,aggregate2,aggregate3} = useSelector(state => state.user);
+
+export default function Pagination() {
+    const {users,currentPageInd,limit} = useSelector(state => state.user);
     const dispatch = useDispatch();
-    console.log(users)
-    if((toggler1 && toggler2 && toggler3 && initiate) || (aggregate1 && aggregate2 && aggregate3 && initiate) 
-    || (toggler1 && aggregate2 && aggregate3 && initiate)  || (toggler1 && toggler2 && aggregate3 && initiate)
-    || (aggregate1 && toggler2 && aggregate3 && initiate)  || (aggregate1 && aggregate2 && toggler3 && initiate)
-    || (aggregate1 && toggler2 && toggler3 && initiate)  || (toggler1 && aggregate2 && toggler3 && initiate)
-
-    ) pLimit=lim;
-    else pLimit=Math.ceil(users.length/10);
-  
-    useEffect(()=>{
-      dispatch(setCurrentPageInd(1))
-    },[active])
    
 
     const leftClick=(e)=>{
         e.preventDefault();
-        if(currentPageInd===pLimit){
+        if(currentPageInd===limit){
           dispatch(setCurrentPageInd(1))
+          if(Math.ceil(users.length/10)<limit) reqOnChn("",0,0,dispatch,1)
+          
         }
        else {
            dispatch(setCurrentPageInd(currentPageInd+1))
+           if(Math.ceil(users.length/10)<limit) reqOnChn("",0,0,dispatch,currentPageInd+1)
        }
+
         
     }
 
     const rightClick=(e)=>{
         e.preventDefault();
         if(currentPageInd===1){
-          dispatch(setCurrentPageInd(pLimit))
+          dispatch(setCurrentPageInd(limit))
+          if(Math.ceil(users.length/10)<limit) reqOnChn("",0,0,dispatch,limit)
         }
         else{
             dispatch(setCurrentPageInd(currentPageInd-1))
+            if(Math.ceil(users.length/10)<limit) reqOnChn("",0,0,dispatch,currentPageInd-1)
         }
    }
     
@@ -56,7 +50,7 @@ export default function Pagination({lim}) {
     </li>
     
     <div className="relative z-[5] flex h-[25px] text-white justify-center w-[100px]">
-           <div className="leading-[25px]">{currentPageInd} of {pLimit}</div>
+           <div className="leading-[25px]">{currentPageInd} of {limit}</div>
     </div>
       
    
